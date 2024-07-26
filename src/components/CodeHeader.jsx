@@ -53,7 +53,11 @@ const CodeHeader = ({ renderCodeRef }) => {
                         ? fileIcons[1]
                         : fileIcons[2]}
                   </span>
-                  {currentLanguage.toUpperCase()}
+                  {(currentLanguage === "javascript"
+                    ? "js"
+                    : currentLanguage
+                  ).toUpperCase()}
+                  <RiArrowDropDownLine className="pt-1 pl-1 text-3xl" />
                 </MenubarTrigger>
                 <MenubarContent>
                   {codeFormats.map((format, idx) => (
