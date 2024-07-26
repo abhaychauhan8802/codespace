@@ -1,6 +1,6 @@
 # Introduction
 
-**CodeWriter** is a web-based code editor that allows you to write, edit, and preview HTML, CSS, and JavaScript code. It provides a user-friendly interface with syntax highlighting, code completion, and live preview for a seamless development experience.
+**CodeSpace** is a web-based code editor that allows you to write, edit, and preview HTML, CSS, and JavaScript code. It provides a user-friendly interface with syntax highlighting, code completion, and live preview for a seamless development experience.
 
 # Technologies Used
 
@@ -32,8 +32,8 @@ Make sure you have the following installed on your machine:
 **Clone this repository:**
 
 ```bash
-git clone https://github.com/abhaychauhan8802/CodeWriter.git
-cd CodeWriter
+git clone https://github.com/abhaychauhan8802/CodeSpace.git
+cd CodeSpace
 ```
 
 **Install dependencies:**
