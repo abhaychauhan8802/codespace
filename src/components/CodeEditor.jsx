@@ -19,15 +19,17 @@ const CodeEditor = () => {
 
   return (
     <>
-      <CodeHeader />
-      <CodeMirror
-        value={code[currentLanguage]}
-        height="calc(100vh - 64px - 48px)"
-        theme={andromeda}
-        style={{ fontSize: fontSize }}
-        extensions={[loadLanguage(currentLanguage)]}
-        onChange={onChange}
-      />
+      <div className="h-[calc(100vh - 64px)]">
+        <CodeHeader />
+        <CodeMirror
+          value={code[currentLanguage]}
+          height="calc(100vh - 64px - 48px)"
+          theme={andromeda}
+          style={{ fontSize: fontSize }}
+          extensions={[loadLanguage(currentLanguage)]}
+          onChange={onChange}
+        />
+      </div>
     </>
   );
 };

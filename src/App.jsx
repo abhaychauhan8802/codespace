@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <div className="h-screen w-screen">
+        <div className="h-screen w-screen overflow-hidden">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
