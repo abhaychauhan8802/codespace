@@ -6,6 +6,7 @@ import { IoLogoJavascript } from "react-icons/io5";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Button } from "./ui/button";
 import { changeLanguage, changeFontSize } from "@/redux/slices/codeSlice";
+import { useMediaQuery } from "react-responsive";
 import {
   Menubar,
   MenubarContent,
@@ -15,31 +16,79 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-const CodeHeader = () => {
+const CodeHeader = ({ renderCodeRef }) => {
   const { currentLanguage, fontSize } = useSelector((state) => state.codeSlice);
   const codeFormats = ["html", "css", "javascript"];
   const fileIcons = [<FaHtml5 />, <FaCss3Alt />, <IoLogoJavascript />];
   const fontSizeList = Array.from({ length: 8 }, (_, i) => `${12 + i * 2}px`);
 
+  const isMobile = useMediaQuery({
+    query: "(max-width: 720px)",
+  });
+
   const dispatch = useDispatch();
+
+  const handlePreview = () => {
+    renderCodeRef.current.style.right = 0;
+  };
 
   return (
     <>
       <div className="h-12 flex items-center justify-between mx-2">
-        <div className="flex gap-1">
-          {codeFormats.map((format, idx) => (
-            <Button
-              className="w-20 rounded-sm text-xs"
-              variant={currentLanguage === format ? "secondary" : "outline"}
-              onClick={() => dispatch(changeLanguage(format))}
-              key={idx}
-            >
-              <div className="pr-1">{fileIcons[idx]}</div>
-              {(format === "javascript" ? "js" : format).toUpperCase()}
-            </Button>
-          ))}
-        </div>
         <div>
+          {isMobile ? (
+            <Menubar className="space-x-0 p-0 h-0">
+              <MenubarMenu>
+                <MenubarTrigger
+                  className="bg-secondary rounded-sm text-md"
+                  onClick={() => {
+                    setIsDropdownOpen(!isDropdownOpen);
+                    dispatch(changeLanguage(format));
+                  }}
+                >
+                  <span className="pr-2">
+                    {currentLanguage === "html"
+                      ? fileIcons[0]
+                      : currentLanguage === "css"
+                        ? fileIcons[1]
+                        : fileIcons[2]}
+                  </span>
+                  {currentLanguage.toUpperCase()}
+                </MenubarTrigger>
+                <MenubarContent>
+                  {codeFormats.map((format, idx) => (
+                    <MenubarRadioGroup key={idx}>
+                      <MenubarRadioItem
+                        value={format}
+                        onClick={() => dispatch(changeLanguage(format))}
+                        className="px-4"
+                      >
+                        <div className="pr-3">{fileIcons[idx]}</div>
+                        {format.toUpperCase()}
+                      </MenubarRadioItem>
+                    </MenubarRadioGroup>
+                  ))}
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          ) : (
+            <div className="flex gap-1">
+              {codeFormats.map((format, idx) => (
+                <Button
+                  className="w-20 rounded-sm text-xs"
+                  variant={currentLanguage === format ? "secondary" : "outline"}
+                  onClick={() => dispatch(changeLanguage(format))}
+                  key={idx}
+                >
+                  <div className="pr-1">{fileIcons[idx]}</div>
+                  {(format === "javascript" ? "js" : format).toUpperCase()}
+                </Button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
           <Menubar className="space-x-0 p-0 h-0">
             <MenubarMenu>
               <MenubarTrigger
@@ -63,6 +112,14 @@ const CodeHeader = () => {
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
+
+          {isMobile && (
+            <div>
+              <Button onClick={handlePreview} variant="success">
+                Preview
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </>

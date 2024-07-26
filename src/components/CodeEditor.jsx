@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CodeHeader from "./CodeHeader";
 import { updateCodeValue } from "@/redux/slices/codeSlice";
 
-const CodeEditor = () => {
+const CodeEditor = ({ renderCodeRef }) => {
   const { code, currentLanguage, fontSize } = useSelector(
     (state) => state.codeSlice
   );
@@ -19,8 +19,8 @@ const CodeEditor = () => {
 
   return (
     <>
-      <div className="h-[calc(100vh - 64px)]">
-        <CodeHeader />
+      <div className="h-[calc(100vh-64px)]">
+        <CodeHeader renderCodeRef={renderCodeRef} />
         <CodeMirror
           value={code[currentLanguage]}
           height="calc(100vh - 64px - 48px)"
