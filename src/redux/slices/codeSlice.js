@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   code: {
     html: `<div>\n  <h1>CodeWriter</h1>\n</div>`,
-    css: `body {\n  margin: 20px;\n}`,
+    css: `* {\n  margin:0;\n  padding:0;\n  box-sizing:border-box;\n}`,
     javascript: `console.log("Hello World");`,
   },
   currentLanguage: "html",

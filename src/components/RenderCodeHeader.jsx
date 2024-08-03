@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 
 const RenderCodeHeader = ({ renderCodeRef }) => {
   const isMobile = useMediaQuery({
-    query: "(max-width: 720px)",
+    query: "(max-width: 768px)",
   });
 
   const handleClose = () => {

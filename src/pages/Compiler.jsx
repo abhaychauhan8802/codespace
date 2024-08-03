@@ -7,13 +7,12 @@ import {
 } from "@/components/ui/resizable";
 import CodeEditor from "@/components/CodeEditor";
 import RenderCode from "@/components/RenderCode";
-import { Button } from "@/components/ui/button";
 
 const Compiler = () => {
   const renderCodeRef = useRef(null);
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 720px)",
+    query: "(max-width: 768px)",
   });
 
   if (isMobile) {

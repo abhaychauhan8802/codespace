@@ -23,7 +23,7 @@ const CodeHeader = ({ renderCodeRef }) => {
   const fontSizeList = Array.from({ length: 8 }, (_, i) => `${12 + i * 2}px`);
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 720px)",
+    query: "(max-width: 768px)",
   });
 
   const dispatch = useDispatch();
