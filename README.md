@@ -32,8 +32,8 @@ Make sure you have the following installed on your machine:
 **Clone this repository:**
 
 ```bash
-git clone https://github.com/abhaychauhan8802/CodeSpace.git
-cd CodeSpace
+git clone https://github.com/abhaychauhan8802/codespace.git
+cd codespace
 ```
 
 **Install dependencies:**
